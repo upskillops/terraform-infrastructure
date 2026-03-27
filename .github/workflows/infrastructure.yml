@@ -11,4 +11,4 @@ jobs:
           - name: Say Hello
             run: echo "Hello I am running  this job on self hosted runner"
           - name: Print Terraform Version
-            run: terrafome --version 
+            run: terraform --version 
