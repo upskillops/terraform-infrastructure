@@ -2,7 +2,7 @@ name: Hello Infra Runner
 
 on:
   push:
-     branches: [ main ]
+     branches: [ main,dev ]
 
 jobs:
    hello:
@@ -11,4 +11,9 @@ jobs:
           - name: Say Hello
             run: echo "Hello I am running  this job on self hosted runner"
           - name: Print Terraform Version
-            run: echo $GITHUB_REF
+            run: |
+                if [[ "$GITHUB_REF" == "/ref/heads/main" ]]; then
+                      echo "Running code from main branch"
+                else
+                    echo "Running code from dev branch"
+                fi    
