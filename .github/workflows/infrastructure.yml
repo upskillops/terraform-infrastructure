@@ -13,7 +13,13 @@ jobs:
           - name: Print Terraform Version
             run: |
                 if [[ "$GITHUB_REF" == "/ref/heads/main" ]]; then
-                      echo "Running code from main branch"
+                      terraform init
+                      terraform plan 
+                      terrafrom apply -f $GITHUB_REF_NAME.tfvars --auto-approve
+                elif [[ "$GITHUB_REF" == "/ref/heads/dev" ]];
+                    terraform init
+                    terraform plan 
+                    terraform apply -f $GITHUB_REF_NAME.tfvars
                 else
-                    echo "Running code from dev branch"
+                  echo "I am allowed to run the flow in dev or main branch"
                 fi    
