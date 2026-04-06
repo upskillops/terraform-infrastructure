@@ -11,11 +11,11 @@ jobs:
             run: echo "Hello I am running  this job on self hosted runner"
           - name: Print Terraform Version
             run: |
-                if [[ "$GITHUB_REF" == "/ref/heads/main" ]]; then
+                if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
                       terraform init
                       terraform plan 
                       terrafrom apply -f $GITHUB_REF_NAME.tfvars --auto-approve
-                elif [[ "$GITHUB_REF" == "/ref/heads/dev" ]]; then
+                elif [[ "$GITHUB_REF" == "refs/heads/dev" ]]; then
                     terraform init
                     terraform plan 
                     terraform apply -f $GITHUB_REF_NAME.tfvars
