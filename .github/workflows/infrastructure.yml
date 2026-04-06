@@ -12,7 +12,7 @@ jobs:
             run: echo "Hello I am running  this job on self hosted runner"
           - name: Print Terraform Version
             run: |
-                if [[ "$GITHUB_REF" == "/refs/heads/main" ]]; then
+                if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
                       echo "Running code from main branch"
                 else
                     echo "Running code from dev branch"
