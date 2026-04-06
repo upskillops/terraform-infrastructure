@@ -1,8 +1,7 @@
 name: Hello Infra Runner
 
-on:
-  push:
-     branches: [ main,dev ]
+on: 
+  push
 
 jobs:
    hello:
@@ -13,7 +12,15 @@ jobs:
           - name: Print Terraform Version
             run: |
                 if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
-                      echo "Running code from main branch"
+                      echo "Running terraform for branch $GITHUB_REF_NAME"
+                      terraform init
+                      terraform plan 
+                      terrafrom apply -f $GITHUB_REF_NAME.tfvars --auto-approve
+                elif [[ "$GITHUB_REF" == "refs/heads/dev" ]]; then
+                    echo "Running terraform for branch $GITHUB_REF_NAME"
+                    terraform init
+                    terraform plan 
+                    terraform apply -f $GITHUB_REF_NAME.tfvars
                 else
-                    echo "Running code from dev branch"
+                  echo "I am allowed to run the flow in dev or main branch"
                 fi    
