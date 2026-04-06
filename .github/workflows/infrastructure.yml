@@ -12,10 +12,12 @@ jobs:
           - name: Print Terraform Version
             run: |
                 if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
+                      echo "Running terraform for branch $GITHUB_REF_NAME"
                       terraform init
                       terraform plan 
                       terrafrom apply -f $GITHUB_REF_NAME.tfvars --auto-approve
                 elif [[ "$GITHUB_REF" == "refs/heads/dev" ]]; then
+                    echo "Running terraform for branch $GITHUB_REF_NAME"
                     terraform init
                     terraform plan 
                     terraform apply -f $GITHUB_REF_NAME.tfvars
