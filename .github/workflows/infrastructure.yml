@@ -15,7 +15,7 @@ jobs:
                       terraform init
                       terraform plan 
                       terrafrom apply -f $GITHUB_REF_NAME.tfvars --auto-approve
-                elif [[ "$GITHUB_REF" == "/ref/heads/dev" ]];
+                elif [[ "$GITHUB_REF" == "/ref/heads/dev" ]]; then
                     terraform init
                     terraform plan 
                     terraform apply -f $GITHUB_REF_NAME.tfvars
