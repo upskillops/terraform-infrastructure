@@ -9,11 +9,11 @@ jobs:
        steps:
           - name: Print Dev Secret
             run:  |
-                  secret="${{ secrets.DEV_CLIENT_ID }}"
+                  secret="${{ secrets.CLIENT_ID }}"
                   echo "${secret:0:4}"
-          - name: Print Prod Secret
-            run:  |
-                  secret="${{ secrets.PROD_CLIENT_ID }}"
-                  echo "${secret:0:4}"
+          # name: Print Prod Secret
+           # run:  |
+            #      secret="${{ secrets.PROD_CLIENT_ID }}"
+             #     echo "${secret:0:4}"
 
             
