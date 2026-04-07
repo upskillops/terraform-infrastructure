@@ -8,8 +8,12 @@ jobs:
        runs-on: [ infra ]
        steps:
           - name: Print Dev Secret
-            run:  echo ${{ secrets.DEV_CLIENT_ID }}
+            run:  |
+                  secret="${{ secrets.DEV_CLIENT_ID }}"
+                  echo "${secret:0:4}"
           - name: Print Prod Secret
-            run:  echo ${{ secrets.PROD_CLIENT_ID }}
+            run:  |
+                  secret="${{ secrets.PROD_CLIENT_ID }}"
+                  echo "${secret:0:4}"
 
             
