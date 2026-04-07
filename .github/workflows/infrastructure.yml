@@ -6,7 +6,7 @@ on:
 jobs:
    hello:
        runs-on: [ infra ]
-       environment: Dev
+       environment: Prod
        steps:
           - name: Print Dev Secret
             run:  |
