@@ -8,7 +8,7 @@ jobs:
      runs-on: [infra]
      steps:
         - name: Build Job
-          run: echo "I am in build phase"
+          run: echo1 "I am in build phase"
         - name: Build Secod Job
           run: echo "Runing Second Build Job" 
 
