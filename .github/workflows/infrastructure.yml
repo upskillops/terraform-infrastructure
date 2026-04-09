@@ -8,26 +8,14 @@ jobs:
      runs-on: [infra]
      steps:
         - name: Build Java Application
-          run: echo "I am in build phase"
+          run: echo "I am in build phase" > app.txt
    
-   build-python:
-     runs-on: [infra]
-     steps:
-        - name: Build Pythn Application
-          run: echo "I am in build phase"       
-
-   test:
-      runs-on: [infra]
-      needs: [build-java,build-python]
-      steps:
-        - name: Test Job
-          run: echo1 "Running Test Job"
-
-   deploy:
-      runs-on: [infra]
-      needs: [build-java,build-python,test]
-      steps:
-        - name: Deploy Job
-          run: echo "Running Deploy Job"
+   read-Code:
+       runs-on: [infra]
+       needs: [build-java]
+       steps:
+          - name: Read the File
+            run: cat aap.txt
+     
 
             
