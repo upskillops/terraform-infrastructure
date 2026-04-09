@@ -4,24 +4,28 @@ on:
   push
 
 jobs:
-   build:
+   build-java:
      runs-on: [infra]
      steps:
-        - name: Build Job
+        - name: Build Java Application
           run: echo "I am in build phase"
-        - name: Build Secod Job
-          run: echo "Runing Second Build Job" 
+   
+   build-python:
+     runs-on: [infra]
+     steps:
+        - name: Build Pythn Application
+          run: echo "I am in build phase"       
 
    test:
       runs-on: [infra]
-      needs: build
+      needs: [build-java,build-python]
       steps:
         - name: Test Job
           run: echo1 "Running Test Job"
 
    deploy:
       runs-on: [infra]
-      needs: [build,test]
+      needs: [build-java,build-python,test]
       steps:
         - name: Deploy Job
           run: echo "Running Deploy Job"
