@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-   use-template:
+   build:
      uses: ./.github/workflows/template.yaml
    test:
      runs-on: [infra]
