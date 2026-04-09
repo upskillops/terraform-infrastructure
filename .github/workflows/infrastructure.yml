@@ -4,17 +4,24 @@ on:
   push
 
 jobs:
-   hello:
-       runs-on: [ infra ]
-       environment: Prod
-       steps:
-          - name: Print Dev Secret
-            run:  |
-                  secret="${{ secrets.CLIENT_ID }}"
-                  echo "${secret:0:4}"
-          # name: Print Prod Secret
-           # run:  |
-            #      secret="${{ secrets.PROD_CLIENT_ID }}"
-             #     echo "${secret:0:4}"
+   build:
+     runs-on: [infra]
+     steps:
+        - name: Build Job
+          run: echo "I am in build phase"
+        - name: Build Secod Job
+          run: echo "Runing Second Build Job" 
+
+   test:
+      runs-on: [infra]
+      steps:
+        - name: Test Job
+          run: echo "Running Test Job"
+
+   deploy:
+      runs-on: [infra]
+      steps:
+        - name: Deploy Job
+          run: echo "Running Deploy Job"
 
             
