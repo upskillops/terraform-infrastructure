@@ -14,12 +14,14 @@ jobs:
 
    test:
       runs-on: [infra]
+      needs: build
       steps:
         - name: Test Job
           run: echo "Running Test Job"
 
    deploy:
       runs-on: [infra]
+      needs: [build,test]
       steps:
         - name: Deploy Job
           run: echo "Running Deploy Job"
